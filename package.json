@@ -1,0 +1,35 @@
+{
+  "name": "admin",
+  "private": true,
+  "author": "mingxindong <xindong.ming@avatr.com>",
+  "scripts": {
+    "build": "max build",
+    "dev": "max dev",
+    "format": "prettier --cache --write .",
+    "postinstall": "max setup",
+    "prepare": "husky",
+    "setup": "max setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "5.3.7",
+    "@ant-design/pro-components": "2.7.15",
+    "@umijs/max": "4.3.17",
+    "ahooks": "3.8.0",
+    "antd": "5.20.3",
+    "js-cookie": "3.0.5",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/lodash": "^4.17.6",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "husky": "^9",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "prettier-plugin-packagejson": "^2.4.3",
+    "typescript": "^5.0.3"
+  }
+}
