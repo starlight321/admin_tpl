@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Avatar, Dropdown } from 'antd';
 import _ from 'lodash';
@@ -34,11 +33,14 @@ if (menusStr) {
 }
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = () => {
-  const onMenuClick = useCallback((item: any) => {
-    window.location.href = `${item.path}?skipBy=menu`;
+  const onMenuClick = useCallback(({ key }: any) => {
+    const target = projectNotice.find((item) => item.menuId === key);
+    if (target) {
+      window.location.href = `${target.path}?skipBy=menu`;
+    }
   }, []);
 
- const menuItems = projectNotice
+  const menuItems = projectNotice
     .filter((item) => !item.hideInMenu)
     .map((app: any) => ({
       key: app.menuId,
@@ -53,7 +55,11 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = () => {
     }));
 
   return (
-    <Dropdown  menu={{ selectedKeys: [], onClick: onMenuClick, items: menuItems }}>
+    <Dropdown
+      menu={{ selectedKeys: [], onClick: onMenuClick, items: menuItems }}
+      trigger={['click']}
+      overlayClassName={styles.appMenuWrap}
+    >
       <span className={`${styles.action} ${styles.account}`}>
         <AppstoreOutlined style={{ paddingRight: '6px' }} />
         <span className={`${styles.name} anticon`}>工作台</span>
